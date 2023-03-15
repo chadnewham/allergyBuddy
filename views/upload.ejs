@@ -1,0 +1,24 @@
+<%- include('public/partials/base')-%>
+<div class="form-container flex-column center">
+	<div class="form-fields flex-column pad">
+		<label for="item-name">Item Name</label>
+		<input type="text" label="item-name" name="itemName">
+		<label for="ingredients">Ingredients</label>
+		<textarea type="text-area" label="ingredients" rows=10 name="ingredientString"></textarea>
+		<div class="">
+			<ul>
+				<li class="checkbox-container"><input type="checkbox" name="gluten">Gluten</li>
+				<li><input type="checkbox" name="dairy">Dairy</li>
+				<li><input type="checkbox" name="egg">Egg</li>
+				<li><input type="checkbox" name="fish">Fish</li>
+				<li><input type="checkbox" name="shellfish">Shellfish</li>
+				<li><input type="checkbox" name="soy">Soy</li>
+				<li><input type="checkbox" name="peanut">Peanut</li>
+				<li><input type="checkbox" name="treeNut">Tree Nut</li>
+				<li><input type="checkbox" name="sesame">Sesame</li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+<%- include('public/partials/close')-%>

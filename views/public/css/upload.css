@@ -1,0 +1,24 @@
+
+
+.form-container{
+	align-items: center;
+}
+.form-fields{
+	width: 50ch;
+	background-color: white;
+}
+
+.form-fields input{
+	border: none;
+ 	border-bottom: 2px solid red;
+	padding: .5em;
+	margin: .5em 0;
+	font-size: 1em;
+}
+.form-fields label{
+	font-size: 1.5em;
+	padding: .5em;
+}
+.form-fields input:focus{
+	outline: none;
+}

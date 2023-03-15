@@ -1,0 +1,85 @@
+
+
+body{
+	margin: 0;
+	font-family: 'Golos Text';
+	background-color: #d3ecf2;
+}
+.grid-container{
+	display: grid;
+	grid-gap: 1em;
+	grid-template-areas: "head head"
+						 "nav main"
+						 "nav main";
+	grid-template-columns: .25fr 1fr;
+	grid-template-rows: 1fr auto
+}
+
+.head{grid-area: head}
+.nav{grid-area: nav}
+.main{grid-area: main}
+
+.base-card{
+	background-color:gray;
+}
+
+/* flex styles */
+.flex{
+	display: flex;
+}
+.flex-column{
+	display: flex;
+	flex-direction: column;
+}
+.center{
+	justify-content: center;
+}
+.space-evenly{
+	justify-content: space-evenly;
+}
+/* flex styles */
+
+/* general styles */
+.pad{
+	padding: 1em;
+}
+/* general styles */
+
+/* head */
+.head h1{
+	
+}
+/* head */
+
+/* card */
+.menu-item-card{
+	background: linear-gradient(45deg, rgba(0,212,255,0.3394607843137255) 0%, rgba(249,249,249,1) 100%);
+	/* box-shadow: 7px 6px 10px -5px rgba(0,0,0,0.75); */
+	grid-gap: 1em;
+}
+.card-ingredients{
+	width: 65ch;
+}
+.card-allergy-container{
+	background-color: rgb(77, 176, 240);
+	padding: 0 .5em;
+}
+/* card */
+
+/* nav */
+.nav-card{
+	border: 2px solid black;
+	text-align: center;
+	font-size: 1.25em;
+	margin-bottom: .5em;
+	padding: 1em;
+	transition: 200ms;
+	text-decoration: none;
+	color: inherit;
+	
+}
+.nav-card:hover{
+	background-color: rgb(134, 203, 247);
+	transition: 200ms;
+}
+/* nav */
