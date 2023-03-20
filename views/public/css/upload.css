@@ -7,7 +7,6 @@
 	width: 50ch;
 	background-color: white;
 }
-
 .form-fields input{
 	border: none;
  	border-bottom: 2px solid red;
@@ -21,4 +20,28 @@
 }
 .form-fields input:focus{
 	outline: none;
+}
+
+.checkbox-container{
+
+}
+.checkbox-list{
+	list-style-type: none;
+}
+
+.upload-option{
+	border: 2px solid black;
+	text-align: center;
+	font-size: 1.25em;
+	margin-bottom: .5em;
+	padding: .5em;
+	transition: 200ms;
+	text-decoration: none;
+	color: inherit;
+	background-color: rgb(126, 164, 230);
+}
+.upload-option:hover{
+	box-shadow: 2px 2px 5px rgb(49, 49, 49);
+	transition: 200ms;
+	background-color: rgb(87, 140, 231);
 }

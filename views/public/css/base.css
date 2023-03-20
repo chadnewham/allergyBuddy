@@ -2,6 +2,7 @@
 
 body{
 	margin: 0;
+	padding: 2em;
 	font-family: 'Golos Text';
 	background-color: #d3ecf2;
 }
@@ -37,6 +38,12 @@ body{
 .space-evenly{
 	justify-content: space-evenly;
 }
+.gap{
+	gap: 1em;
+}
+.wrap{
+	flex-wrap: wrap;
+}
 /* flex styles */
 
 /* general styles */
@@ -53,16 +60,23 @@ body{
 
 /* card */
 .menu-item-card{
-	background: linear-gradient(45deg, rgba(0,212,255,0.3394607843137255) 0%, rgba(249,249,249,1) 100%);
-	/* box-shadow: 7px 6px 10px -5px rgba(0,0,0,0.75); */
+	background: linear-gradient(45deg, rgba(0,212,255,0.33) 0%, #d3ecf2 75%);
+	box-shadow: 7px 6px 10px -5px rgba(0,0,0,0.75);
 	grid-gap: 1em;
 }
 .card-ingredients{
 	width: 65ch;
 }
 .card-allergy-container{
+	width: max(10%, 20ch);
 	background-color: rgb(77, 176, 240);
-	padding: 0 .5em;
+	padding: 0 .5em .5em .5em;
+}
+.allergens{
+	background-color: rgb(255, 255, 157);
+	font-weight: bold;
+	border-radius: 5px;
+	padding: .5em;
 }
 /* card */
 

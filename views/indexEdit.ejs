@@ -1,0 +1,31 @@
+<%-include('public/partials/base')-%>
+	<div class="flex-column gap">
+
+	<% menuItems.forEach(function(item){ %>
+
+		<div class="menu-item-card flex">
+			<div class="card-allergy-container flex-column">
+				<h3>
+					Top Allergens Present
+				</h3>
+				<div class="flex wrap center gap">
+				<% item.allergy.forEach(function(i){ %>
+					<span class="allergens"><%=i%></span>
+				<% }) %>
+				</div>
+                <a href="/delete/<%=item._id%>">Delete</a>
+			</div>
+			<div class="card-ingredients-container">
+				<h2 class="card-head">
+					<%=item.name%>
+				</h2>
+				<p class="card-ingredients">
+					<%=item.ingredientString%>
+				</p>
+			</div>
+
+		</div>
+	<% }) %>
+</div>
+
+<%-include('public/partials/close')-%>

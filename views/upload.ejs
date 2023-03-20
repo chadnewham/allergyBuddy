@@ -1,24 +1,38 @@
 <%- include('public/partials/base')-%>
-<div class="form-container flex-column center">
-	<div class="form-fields flex-column pad">
-		<label for="item-name">Item Name</label>
-		<input type="text" label="item-name" name="itemName">
-		<label for="ingredients">Ingredients</label>
-		<textarea type="text-area" label="ingredients" rows=10 name="ingredientString"></textarea>
-		<div class="">
-			<ul>
-				<li class="checkbox-container"><input type="checkbox" name="gluten">Gluten</li>
-				<li><input type="checkbox" name="dairy">Dairy</li>
-				<li><input type="checkbox" name="egg">Egg</li>
-				<li><input type="checkbox" name="fish">Fish</li>
-				<li><input type="checkbox" name="shellfish">Shellfish</li>
-				<li><input type="checkbox" name="soy">Soy</li>
-				<li><input type="checkbox" name="peanut">Peanut</li>
-				<li><input type="checkbox" name="treeNut">Tree Nut</li>
-				<li><input type="checkbox" name="sesame">Sesame</li>
-			</ul>
+<div class="flex gap">
+	<div class="option-container flex-column">
+		<div class="upload-option">
+			New Menu Item Group
+		</div>
+		<div class="upload-option">
+			Edit Groups
 		</div>
 	</div>
-	
+
+	<div class="form-container flex-column center">
+		<form class="form-fields flex-column pad" method="POST" href="/upload">
+			<label for="item-name">Item Name</label>
+			<input type="text" label="item-name" name="name">
+			<label for="ingredients">Ingredients</label>
+			<textarea type="text-area" label="ingredients" rows=10 name="ingredientString"></textarea>
+
+			<div class="checkbox-container">
+				
+				<div class="checkbox"><input type="checkbox" name="allergy" value="gluten"><label for="">Gluten</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="dairy"><label for="">Dairy</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="egg"><label for="">Egg</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="fish"><label for="">Fish</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="shellfist"><label for="">Shellfish</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="soy"><label for="">Soy</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="peanut"><label for="">Peaut</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="treenut"><label for="">Tree Nut</label></div>
+				<div class="checkbox"><input type="checkbox" name="allergy" value="sesame"><label for="">Sesame</label></div>
+			</div>
+			<div>
+				<button>Submit</button>
+			</div>
+		</form>
+		
+	</div>
 </div>
 <%- include('public/partials/close')-%>

@@ -1,0 +1,2 @@
+# ignore searchAPI route
+views/searchAPI.ejs
