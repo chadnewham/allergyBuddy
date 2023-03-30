@@ -1,22 +1,49 @@
 <%- include('public/partials/base')-%>
-<div class="flex gap">
-	<div class="option-container flex-column">
-		<div class="upload-option">
-			New Menu Item Group
+<div class="flex-column gap">
+	<div id="menu-controls" class="option-container flex center gap">
+		<div id="new-group-button" class="upload-option" attr="new-group">
+			Branded Items
 		</div>
 		<div class="upload-option">
 			Edit Groups
 		</div>
+		<div class="upload-option" attr="add-item">
+			Add Item
+		</div>
 	</div>
+	
+	<section id="new-group" class="form-container flex gap space-evenly">
+		<div class="flex-column">
+			<h2>Enter Manually</h2>
+			<span class="">Item Name</span>
+			<input type="text" name="manualInputItemName">
+			<span class="">Ingredients</span>
+			<textarea name="manulInputItemIngredients" id="" cols="30" rows="10"></textarea>
+			<button style="align-self: flex-start;" type="submit">Add Ingredient</button>
+		</div>
+		<div class="ingredient-search-container flex-column">
+			<h2 id="brand-name"></h2>
+			<h4 id="brand-description"></h4>
+			<span>Barcode Numbers</span>
+			<input id="search-input" type="text">
+			<span>Resuls</span>
+			<div class="flex">
+				<textarea id="ingredient-textarea" type="text-area" label="ingredients" cols=50 rows=10></textarea>
+			</div>
+			<div id="fetch-button" class="upload-option">Fetch</div>
+			
+		</div>
+		
+	</section>
 
-	<div class="form-container flex-column center">
+	<section id="add-item" class="form-container flex-column center hide">
 		<form class="form-fields flex-column pad" method="POST" href="/upload">
 			<label for="item-name">Item Name</label>
 			<input type="text" label="item-name" name="name">
 			<label for="ingredients">Ingredients</label>
 			<textarea type="text-area" label="ingredients" rows=10 name="ingredientString"></textarea>
 
-			<div class="checkbox-container">
+			<div class="checkbox-container flex wrap">
 				
 				<div class="checkbox"><input type="checkbox" name="allergy" value="gluten"><label for="">Gluten</label></div>
 				<div class="checkbox"><input type="checkbox" name="allergy" value="dairy"><label for="">Dairy</label></div>
@@ -33,6 +60,7 @@
 			</div>
 		</form>
 		
-	</div>
+	</section>
 </div>
+<script src="public/js/upload.js"></script>
 <%- include('public/partials/close')-%>

@@ -23,12 +23,15 @@
 }
 
 .checkbox-container{
-
+	flex: 1;
+	/* justify-content: space-between; */
 }
 .checkbox-list{
 	list-style-type: none;
 }
-
+#menu-controls >*{
+	cursor: pointer;
+}
 .upload-option{
 	border: 2px solid black;
 	text-align: center;
@@ -44,4 +47,8 @@
 	box-shadow: 2px 2px 5px rgb(49, 49, 49);
 	transition: 200ms;
 	background-color: rgb(87, 140, 231);
+}
+
+.hide{
+	display: none;
 }

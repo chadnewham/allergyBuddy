@@ -1,15 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const path = require('path');
+const fetch = require('node-fetch');
+
 const app = express();
-const http = require('http');
 
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
-
 
 connectDB().catch(err => console.log(err));
 async function connectDB() {
@@ -68,7 +69,18 @@ app.get('/listAll', async (req, res)=>{
 
     }
 });
-
+app.get('/usdaFetch', (req, res)=>{
+   
+    let searchParams = `?api_key=${process.env.USDA_LABEL_API_KEY}&query=${req.query.search}`
+    
+    fetch('https://api.nal.usda.gov/fdc/v1/foods/search'+ searchParams)
+    .then(response => response.json())
+    .then(data =>{
+        res.send(data)
+    }).catch(err=>{
+        console.log(err)
+    });
+});
 app.listen(port, ()=>{
     console.log(`app listening on ${port}`);
 });

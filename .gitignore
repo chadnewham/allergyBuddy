@@ -133,3 +133,4 @@ dist
 # search api
 /views/searchAPI.ejs
 
+.env
