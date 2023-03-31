@@ -46,9 +46,11 @@
 .upload-option:hover{
 	box-shadow: 2px 2px 5px rgb(49, 49, 49);
 	transition: 200ms;
-	background-color: rgb(87, 140, 231);
 }
 
 .hide{
 	display: none;
+}
+.wait-post{
+	background-color: rgb(133, 50, 50);
 }

@@ -12,14 +12,13 @@
 		</div>
 	</div>
 	
-	<section id="new-group" class="form-container flex gap space-evenly">
+	<section id="new-group" class="form-container flex space-evenly">
 		<div class="flex-column">
-			<h2>Enter Manually</h2>
 			<span class="">Item Name</span>
-			<input type="text" name="manualInputItemName">
+			<input type="text" id="manualInputItemName">
 			<span class="">Ingredients</span>
-			<textarea name="manulInputItemIngredients" id="" cols="30" rows="10"></textarea>
-			<button style="align-self: flex-start;" type="submit">Add Ingredient</button>
+			<textarea id="manualInputItemIngredients" id="" cols="50" rows="10"></textarea>
+			<div id="add-ingredient-button" class="upload-option">Add Ingredient</div>
 		</div>
 		<div class="ingredient-search-container flex-column">
 			<h2 id="brand-name"></h2>
@@ -30,7 +29,7 @@
 			<div class="flex">
 				<textarea id="ingredient-textarea" type="text-area" label="ingredients" cols=50 rows=10></textarea>
 			</div>
-			<div id="fetch-button" class="upload-option">Fetch</div>
+			<div id="fetch-button" class="upload-option">Search USDA</div>
 			
 		</div>
 		

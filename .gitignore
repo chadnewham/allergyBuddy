@@ -134,3 +134,6 @@ dist
 /views/searchAPI.ejs
 
 .env
+
+fakeData.js
+test.js
