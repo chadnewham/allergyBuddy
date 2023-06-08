@@ -38,6 +38,9 @@ body{
 .space-evenly{
 	justify-content: space-evenly;
 }
+.space-between{
+	justify-content: space-between;
+}
 .gap{
 	gap: 1em;
 }

@@ -51,6 +51,10 @@
 .hide{
 	display: none;
 }
+.selected{
+	background-color: blueviolet;
+}
 .wait-post{
 	background-color: rgb(133, 50, 50);
 }
+

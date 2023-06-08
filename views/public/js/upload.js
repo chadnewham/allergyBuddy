@@ -2,33 +2,72 @@ let menuControls = document.querySelectorAll('#menu-controls div');
 let contentSections = document.querySelectorAll('section');
 
 let fetchButton = document.querySelector('#fetch-button');
-let addIngredientButton = document.querySelector('#add-ingredient-button');
+let postIngredientButton = document.querySelector('#post-ingredient-button');
+let submitNewGroupButton = document.querySelector('#submit-new-group-button');
+let addIngredientButtons = document.querySelectorAll('.ingredient-add-button');
+
+let ingredientIds = [];
+
+submitNewGroupButton.addEventListener('click', (e)=>{
+    let data = {
+        ingredients: ingredientIds,
+        name: document.querySelector('#new-group-name').value
+    }
+    postIngredient('/upload/newGroup', data).then(response=>{
+        console.log(response)
+    })
+})
+addIngredientButtons.forEach(ingredientButton=>{
+    ingredientButton.addEventListener('click', (e)=>{
+        if(ingredientIds.indexOf(e.target.getAttribute('attr-id')) < 0){
+            ingredientIds.push(e.target.getAttribute('attr-id'));
+            let div = document.createElement('div');
+            div.classList.add('selected-ingredient', 'flex', 'space-between', 'gap');
+            let span = document.createElement('span');
+            span.textContent = e.target.getAttribute('attr-name');
+            let button = document.createElement('button');
+            button.textContent = 'remove';
+            button.setAttribute('attr-id', e.target.getAttribute('attr-id'));
+            button.addEventListener('click', e=>{
+                ingredientIds.splice(ingredientIds.indexOf(e.target.getAttribute('attr-id')), 1);
+                e.target.parentElement.remove();
+            })
+            div.appendChild(span);
+            div.appendChild(button);
+            document.querySelector('#group-container').appendChild(div)
+            console.log(ingredientIds)
+        }else{
+            console.log('item on list')
+        }
+        
+    });
+});
 
 
 fetchButton.addEventListener('click', (e)=>{
     let searchFor = document.querySelector('#search-input').value;
-    let ingredientTextarea = document.querySelector('#ingredient-textarea');
-    ingredientTextarea.value = `Searching ${searchFor}...`;
+    let searchStatus = document.querySelector('#search-status');
+    searchStatus.textContent = `Searching ${searchFor}...`;
     fetch(`/usdaFetch?search=${searchFor}`)
     .then((response) => response.json())
     .then((data) => {
         if(data.totalHits == 0){
-            ingredientTextarea.value = 'No results';
+            searchStatus.textContent = 'No results';
         }else{
             // console.log(data);
-            document.querySelector('#brand-name').innerHTML = data.foods[0].brandName;
-            document.querySelector('#brand-description').innerHTML = data.foods[0].description;
+            searchStatus.textContent = 'Found!';
 
-            ingredientTextarea.value=data.foods[0].ingredients;
+            document.querySelector('#manual-input-item-name').value = data.foods[0].description;
+            document.querySelector('#manual-input-item-ingredients').value=data.foods[0].ingredients;
         }
     }
     );
 });
 
-addIngredientButton.addEventListener('click', (e)=>{
+postIngredientButton.addEventListener('click', (e)=>{
     let data = {
-        name: document.querySelector('#manualInputItemName').value,
-        ingredientString: document.querySelector('#manualInputItemIngredients').value,
+        name: document.querySelector('#manual-input-item-name').value,
+        ingredientString: document.querySelector('#manual-input-item-ingredients').value,
     }
     e.target.classList.add('wait-post');
     postIngredient('/upload/addIngredient', data).then((data)=>{
@@ -51,7 +90,9 @@ async function postIngredient(url='', data={}){
 
 menuControls.forEach(ele=>{
     ele.addEventListener('click', (e)=>{
-        displayManager(e.target.getAttribute("attr"))
+        displayManager(e.target.getAttribute("attr"));
+        e.target.classList.add('selected');
+
     });
 })
 
@@ -60,6 +101,10 @@ function displayManager(showElement){
     document.querySelectorAll('section').forEach(element => {
         element.classList.add('hide');
     });
+    menuControls.forEach(el=>{
+        el.classList.remove('selected');
+    })
+
     document.querySelector('section#' + showElement).classList.remove('hide');
 }
 

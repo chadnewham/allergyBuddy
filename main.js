@@ -49,17 +49,30 @@ app.get('/search', (req, res)=>{
     res.render(__dirname + '/views/searchAPI.ejs')
 });
 
-app.get('/upload', (req, res)=>{	
-    res.render(__dirname + '/views/upload.ejs');
+app.get('/upload', (req, res)=>{
+    Ingredient.find({})
+    .then(ingredients=>{
+        res.render(__dirname + '/views/upload.ejs', {ingredients: ingredients});
+    }).catch(err=>{
+        res.status(500).send(err);
+    });
 });
 
-app.post('/upload/addIngredients', (req, res)=>{	
+app.post('/upload/addIngredient', (req, res)=>{	
+    console.log(req.body)
+	Ingredient.create(req.body)
+    .then(result=>{
+        console.log(result)
+    })
+    res.json('Ingredient Added')
+});
+app.post('/upload/newGroup', (req, res)=>{	
     console.log(req.body)
 	// Ingredient.create(req.body)
     // .then(result=>{
     //     console.log(result)
     // })
-    res.json('Ingredient Added')
+    res.json('Group Added')
 });
 app.get('/upload/getIngredients', (req, res)=>{
     Ingredient.find({})

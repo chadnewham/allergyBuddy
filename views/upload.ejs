@@ -1,33 +1,55 @@
 <%- include('public/partials/base')-%>
 <div class="flex-column gap">
 	<div id="menu-controls" class="option-container flex center gap">
-		<div id="new-group-button" class="upload-option" attr="new-group">
+		<div id="branded-item-button" class="upload-option" attr="branded-item">
 			Branded Items
 		</div>
-		<div class="upload-option">
-			Edit Groups
+		<div id="create-group-button" class="upload-option selected" attr="create-group">
+			Create Group
 		</div>
-		<div class="upload-option" attr="add-item">
+		<div id="add-item-button" class="upload-option" attr="add-item">
 			Add Item
 		</div>
 	</div>
-	
-	<section id="new-group" class="form-container flex space-evenly">
+	<section id="create-group" class="flex space-evenly">
+		<div id="available-ingredients" class="flex-column">
+		<%ingredients.forEach(function(ingredient, index){%>
+			<div class="flex space-between gap">
+				<div><%=ingredient.name%></div>
+				<button class="ingredient-add-button" attr-name="<%=ingredient.name%>" attr-id="<%=ingredient._id%>">Add</button>
+
+			</div>
+		<%})%>
+		</div>
+		<div id="group-container" class="flex-column">
+			<div class="flex-column gap">
+				<label for="group-name">Name Of Group</label>
+				<div class="flex gap space-between">
+					<input id="new-group-name" style="width: 30ch" name="group-name" type="text">
+					<button id="submit-new-group-button">Submit</button>
+
+				</div>
+				<h3>Ingredients</h3>
+			</div>
+			
+			
+		</div>
+		
+	</section>
+
+	<section id="branded-item" class="flex space-evenly hide">
 		<div class="flex-column">
 			<span class="">Item Name</span>
-			<input type="text" id="manualInputItemName">
+			<input type="text" id="manual-input-item-name">
 			<span class="">Ingredients</span>
-			<textarea id="manualInputItemIngredients" id="" cols="50" rows="10"></textarea>
-			<div id="add-ingredient-button" class="upload-option">Add Ingredient</div>
+			<textarea id="manual-input-item-ingredients" cols="50" rows="10"></textarea>
+			<div id="post-ingredient-button" class="upload-option">Add Ingredient</div>
 		</div>
 		<div class="ingredient-search-container flex-column">
-			<h2 id="brand-name"></h2>
-			<h4 id="brand-description"></h4>
 			<span>Barcode Numbers</span>
 			<input id="search-input" type="text">
-			<span>Resuls</span>
 			<div class="flex">
-				<textarea id="ingredient-textarea" type="text-area" label="ingredients" cols=50 rows=10></textarea>
+				<span id="search-status">Status</span>
 			</div>
 			<div id="fetch-button" class="upload-option">Search USDA</div>
 			
